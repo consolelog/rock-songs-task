@@ -17,6 +17,15 @@ header {
     padding: 10px 20px;
     box-sizing: border-box;
 }
+header h1 {
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #3b3937;
+    font-size: 28px;
+    font-weight:normal;
+    line-height: 40px;
+    margin: 0;
+    float: left;
+}
 input#search {
     width: 250px;
     border: none;
@@ -27,6 +36,10 @@ input#search {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     outline: none;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 input#search:focus {
     border-bottom: 1px solid #b5c4d0;
