@@ -20,5 +20,5 @@ Note: Have a look at [Backbone.JS](http://backbonejs.org/) to learn more about t
 ## Submission
 
 Rename the parent directory of these files to include your name, then zip or tar.gz it.
-Please email us your solution along with your CV to pius@streamtime.net.
+Please email us your solution along with your CV, references and any relevant work samples to pius@streamtime.net.
 
