@@ -1,9 +1,7 @@
 Rock Songs
 =======================
 
-We've created this problem to evaluate how developers tackle a real-world problem. The task should take up to 2 hours for a mid-level front-end developer. We don't want you to spend too much time on it, so if you can't complete it within 2 hours feel free to leave a comment in your code describing where you had trouble and how you would tackle the problem if you had more time.
-
-If you've stumbled across this and want to work at [Streamtime](http://streamtime.net) feel free to submit it too. Even if we're not looking at the time, it doesn't hurt to have a chat to see what we have available.
+We've created this task to evaluate how developers tackle a real-world problem. The task should take up to 2 hours for a mid-level front-end developer.
 
 ## The Task
 
@@ -20,5 +18,5 @@ Note: Have a look at [Backbone.JS](http://backbonejs.org/) to learn more about t
 ## Submission
 
 Rename the parent directory of these files to include your name, then zip or tar.gz it.
-Please email us your solution along with your CV to developers@streamtime.net.
+Please email us your solution along with your CV to pius@streamtime.net.
 
