@@ -13,7 +13,7 @@ Your task is to modify the `index.html` file to solve the problems listed below.
 
 2) Modify the code to sort the list by play count, from most played to least played.
 
-3) Implement the search box, so that whenever a key is entered (or deleted) from the search box, the list instantly filters down to only show the songs and albums that contain the full search query, ignoring case.
+3) Implement the search box, so that whenever a key is entered (or deleted) from the search box, the list instantly filters down to only show the rows where the song or artist contain the full search query, ignoring case.
 
 Note: Have a look at [Backbone.JS](http://backbonejs.org/) to learn more about the javascript framework being used here.
 
