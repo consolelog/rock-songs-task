@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Songs</title>
+    <script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+    <link rel="stylesheet" media="all" href="style.css" type="text/css">
+</head>
+<body>
+
+<header>
+    <h1>My Name's Rock Playlist</h1>
+    <input id="search" type="text" value="" placeholder="Search..." />
+</header>
+
+<table id="song-table">
+    <thead>
+        <th>Song</th>
+        <th>Artist</th>
+        <th>Play Count</th>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script type="text/javascript" charset="utf-8">
+
+    window.SongModel = Backbone.Model.extend({
+        defaults: {
+            song: '',
+            artist: '',
+            play_count: 0
+        }
+    });
+
+    window.SongsCollection = Backbone.Collection.extend({
+        model: SongModel,
+        url: "classic_rock.json",
+        comparator: function(model) {
+            return -model.get('play_count');
+        }
+    });
+
+    window.SongView = Backbone.View.extend({
+        tagName: 'tr',
+        render: function() {
+            this.$el.html("<td>" + this.model.get('song') + "</td>");
+            this.$el.append("<td>" + this.model.get('artist') + "</td>");
+            this.$el.append("<td>" + this.model.get('play_count') + "</td>");
+            return this;
+        }
+    });
+
+    window.songViews = [];
+
+    window.MainView = Backbone.View.extend({
+
+        el: 'body',
+
+        collection: new SongsCollection(),
+
+        filteredCollection: {},
+
+        initialize: function () {
+            var self = this;
+            this.collection.fetch({
+                success: function() {
+                    self.render();
+                }
+            });
+            return this;
+        },
+
+        render: function() {
+            $('#song-table tbody').html('');
+            this.collection.sort().each( function(model) {
+                var newSongView = new SongView({model: model});
+                songViews.push(newSongView);
+                $('#song-table tbody').append( newSongView.render().el );
+            });
+            return this;
+        },
+
+        events: {
+            "keyup #search" : "runFilter"
+        },
+
+        runFilter: function(input) {
+            var pattern = new RegExp(input.target.value, "i");
+            var filtered = this.collection.filter(function(model) {
+                return pattern.test(model.get('song'));
+            });
+            this.filteredCollection = new SongsCollection(filtered);
+            this.filterRender();
+        },
+
+        filterRender: function() {
+            $('#song-table tbody').html('');
+            this.filteredCollection.each( function(model) {
+                var newSongView = new SongView({model: model});
+                songViews.push(newSongView);
+                $('#song-table tbody').append( newSongView.render().el );
+            });
+            return this;
+        }
+
+    });
+
+    window.App = new MainView();
+
+</script>
+</body>
+</html>
